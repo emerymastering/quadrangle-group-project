@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Homepage = () => {
   return (
     <div className="">
@@ -11,21 +13,33 @@ export const Homepage = () => {
             <div class="relative rounded-xl overflow-auto p-8">
               <div class="grid grid-cols-6 gap-4 font-mono text-white text-sm text-center font-bold leading-6">
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
-                <div class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2">
+                <Link
+                  to={"/Edip"}
+                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
+                >
                   1.Edip
-                </div>
+                </Link>
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
-                <div class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-1 col-end-3">
+                <Link
+                  to={"./Chathu"}
+                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-1 col-end-3"
+                >
                   4.Chathu
-                </div>
+                </Link>
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
-                <div class="p-4 rounded-lg shadow-lg bg-sky-500 col-end-7 col-span-2">
+                <Link
+                  to={"/Elys"}
+                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-end-7 col-span-2"
+                >
                   2.Elys
-                </div>
-                <div class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2">
+                </Link>
+                <Link
+                  to={"./Denis"}
+                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
+                >
                   3.Denis
-                </div>
+                </Link>
               </div>
             </div>
           </div>
