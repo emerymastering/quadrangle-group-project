@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Homepage = () => {
   return (
     <div className="">
-      <div class=" min-h-screen flex flex-col items-center justify-center bg-indigo-900">
+      <div className=" min-h-screen flex flex-col items-center justify-center bg-indigo-900 bg-[url('./images/arcade.jpg')] bg-center bg-cover">
         <p className="text-center -mt-40 bg-slate-100 rounded-lg px-2">
           Hello, click on the game to start playing:)
         </p>
