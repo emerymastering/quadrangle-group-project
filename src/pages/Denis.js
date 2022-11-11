@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import { imagesFood } from "./images";
 
 export const Denis = () => {
   const [showComponent, setShowComponent] = useState(false);
 
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       setShowComponent(!showComponent);
     }, 2000);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [showComponent]);
 
   return (
@@ -14,7 +18,7 @@ export const Denis = () => {
       {showComponent && (
         <div>
           <img
-            src="https://mdbootstrap.com//img/Photos/Square/1.jpg"
+            src={imagesFood[Math.floor(Math.random() * imagesFood.length)]}
             className="max-w-xs h-auto rounded-full"
             alt=""
           ></img>
