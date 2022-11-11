@@ -21,6 +21,7 @@ export const Denis = () => {
             src={imagesFood[Math.floor(Math.random() * imagesFood.length)]}
             className="max-w-xs h-auto rounded-full"
             alt=""
+            onClick={() => console.log("yo")}
           ></img>
         </div>
       )}
