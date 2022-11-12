@@ -16,7 +16,8 @@ export const Denis = () => {
   };
 
   const onStartClick = () => {
-    setTime(5);
+    setTime(30);
+    setPoints(0);
     setGameStart(true);
     setGameFinished(false);
   };
@@ -65,7 +66,7 @@ export const Denis = () => {
           {gameFinished && gameStart ? (
             <div className="flex flex-col my-40">
               <div className="bg-black animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full">
-                Game Over, you scored {points} health points
+                Congrats! You scored {points} health points
               </div>
               <button
                 onClick={() => onStartClick()}
