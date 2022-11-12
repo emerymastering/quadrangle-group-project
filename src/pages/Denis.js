@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { imagesFood } from "./images";
 import bad from "../audio/fart.mp3";
 import yummy from "../audio/yummy.mp3";
+import click from "../audio/rclick.mp3";
+import go from "../audio/go.mp3";
+import tic from "../audio/tic.mp3";
 
 export const Denis = () => {
   const [showComponent, setShowComponent] = useState(false);
@@ -10,16 +13,27 @@ export const Denis = () => {
   const [time, setTime] = useState(0);
   const [gameFinished, setGameFinished] = useState(false);
   const [gameStart, setGameStart] = useState(false);
+  // const [playTic, setPlayTic] = useState(null);
 
   const playAudio = () => {
     new Audio(shownFood.type === "m" ? bad : yummy).play();
   };
 
+  const playClick = () => {
+    new Audio(click).play();
+  };
+
+  const playGo = () => {
+    new Audio(go).play();
+  };
+
   const onStartClick = () => {
-    setTime(30);
+    playClick();
+    setTime(3);
     setPoints(0);
     setGameStart(true);
     setGameFinished(false);
+    playGo();
   };
   const shownFood = imagesFood[Math.floor(Math.random() * imagesFood.length)];
   const onClick = () => {
@@ -30,11 +44,16 @@ export const Denis = () => {
   };
 
   useEffect(() => {
+    const clockTic = new Audio(tic);
+
     if (gameStart) {
       const intervalId = setInterval(() => {
         setTime(time - 1);
+        clockTic.play();
         if (time === 1) {
           setGameFinished(true);
+          setGameStart(false);
+          clockTic.pause();
         }
       }, 1000);
       return () => {
@@ -54,7 +73,7 @@ export const Denis = () => {
 
   return (
     <div className="flex mx-auto justify-center h-screen bg-[url('./images/vs.jpeg')] bg-center bg-cover">
-      {!gameStart ? (
+      {!gameStart && !gameFinished ? (
         <button
           onClick={() => onStartClick()}
           className="bg-black text-5xl text-red-300 px-10 py-10 my-auto rounded-full"
@@ -63,20 +82,27 @@ export const Denis = () => {
         </button>
       ) : (
         <div className="">
-          {gameFinished && gameStart ? (
-            <div className="flex flex-col my-40">
-              <div className="bg-black animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full">
-                Congrats! You scored {points} health points
-              </div>
+          {gameFinished && !gameStart ? (
+            <div className="flex flex-row my-80">
               <button
                 onClick={() => onStartClick()}
-                className="bg-black text-5xl text-red-300 py-10 mx-40 mt-20 rounded-full"
+                className="bg-black text-5xl text-red-300 px-10 py-10 rounded-full my-auto"
               >
                 Start Again
               </button>
+              <div className="bg-black animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full my-auto">
+                {points <= 0 ? (
+                  <div>
+                    You scored {points}, next time choose a better food:)
+                  </div>
+                ) : (
+                  <div>Congrats! You scored {points} health points</div>
+                )}
+              </div>
               <Link
                 to={"/"}
-                className="bg-black text-5xl text-red-300 py-10 mx-40 mt-20 rounded-full text-center"
+                onClick={() => playClick()}
+                className="bg-black text-5xl text-red-300 px-10 py-10 rounded-full my-auto"
               >
                 Back to Homepage
               </Link>
