@@ -4,7 +4,7 @@ import { imagesFood } from "./images";
 export const Denis = () => {
   const [showComponent, setShowComponent] = useState(false);
   const [points, setPoints] = useState(0);
-  const [time, setTime] = useState(3);
+  const [time, setTime] = useState(30);
   const [gameFinished, setGameFinished] = useState(false);
   const [gameStart, setGameStart] = useState(false);
 
@@ -50,21 +50,21 @@ export const Denis = () => {
           Start Eating Healthy
         </button>
       ) : (
-        <div className="my-auto">
+        <div className="">
           {gameFinished && gameStart ? (
-            <div className="flex flex-col">
+            <div className="flex flex-col my-40">
               <div className="bg-black animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full">
                 Game Over, you scored {points} health points
               </div>
               <button
                 onClick={() => window.location.reload(false)}
-                className="bg-black text-5xl text-red-300 py-10 mx-40 mt-4 rounded-full"
+                className="bg-black text-5xl text-red-300 py-10 mx-40 mt-20 rounded-full"
               >
                 Start Again
               </button>
             </div>
           ) : (
-            <div className="flex flex-col mt-0">
+            <div className="flex flex-col">
               <div className="px-10 bg-black text-5xl text-red-300 py-10 mx-40 mt-4 rounded-full">
                 Health points: {points}
               </div>
