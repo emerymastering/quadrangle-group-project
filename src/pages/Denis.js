@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { imagesFood } from "./images";
 import bad from "../audio/fart.mp3";
 import yummy from "../audio/yummy.mp3";
@@ -6,7 +7,7 @@ import yummy from "../audio/yummy.mp3";
 export const Denis = () => {
   const [showComponent, setShowComponent] = useState(false);
   const [points, setPoints] = useState(0);
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(0);
   const [gameFinished, setGameFinished] = useState(false);
   const [gameStart, setGameStart] = useState(false);
 
@@ -15,6 +16,7 @@ export const Denis = () => {
   };
 
   const onStartClick = () => {
+    setTime(5);
     setGameStart(true);
     setGameFinished(false);
   };
@@ -27,16 +29,18 @@ export const Denis = () => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTime(time - 1);
-      if (time === 1) {
-        setGameFinished(true);
-      }
-    }, 1000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [time]);
+    if (gameStart) {
+      const intervalId = setInterval(() => {
+        setTime(time - 1);
+        if (time === 1) {
+          setGameFinished(true);
+        }
+      }, 1000);
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [gameStart, time]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -64,11 +68,17 @@ export const Denis = () => {
                 Game Over, you scored {points} health points
               </div>
               <button
-                onClick={() => window.location.reload(false)}
+                onClick={() => onStartClick()}
                 className="bg-black text-5xl text-red-300 py-10 mx-40 mt-20 rounded-full"
               >
                 Start Again
               </button>
+              <Link
+                to={"/"}
+                className="bg-black text-5xl text-red-300 py-10 mx-40 mt-20 rounded-full text-center"
+              >
+                Back to Homepage
+              </Link>
             </div>
           ) : (
             <div className="flex flex-col">
