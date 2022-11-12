@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { imagesFood } from "./images";
+import bad from "../audio/fart.mp3";
+import yummy from "../audio/yummy.mp3";
 
 export const Denis = () => {
   const [showComponent, setShowComponent] = useState(false);
@@ -7,6 +9,10 @@ export const Denis = () => {
   const [time, setTime] = useState(30);
   const [gameFinished, setGameFinished] = useState(false);
   const [gameStart, setGameStart] = useState(false);
+
+  const playAudio = () => {
+    new Audio(shownFood.type === "m" ? bad : yummy).play();
+  };
 
   const onStartClick = () => {
     setGameStart(true);
@@ -17,6 +23,7 @@ export const Denis = () => {
     setPoints(points + (shownFood.type === "v" ? 5 : -5));
     setShowComponent(!showComponent);
     setGameStart(true);
+    playAudio();
   };
 
   useEffect(() => {
