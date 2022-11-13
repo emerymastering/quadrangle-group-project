@@ -29,7 +29,7 @@ export const Denis = () => {
 
   const onStartClick = () => {
     playClick();
-    setTime(3);
+    setTime(30);
     setPoints(0);
     setGameStart(true);
     setGameFinished(false);
