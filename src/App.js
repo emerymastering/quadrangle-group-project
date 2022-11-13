@@ -1,4 +1,5 @@
 import "./App.css";
+import Grid from "./components/Grid/Grid";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
             <h1 className="text-3xl font-bold underline pt-40">
               Welcome to Quadrangle!
             </h1>
+          </div>
+          <div>
+            <Grid />
           </div>
         </div>
       </div>
