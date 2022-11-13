@@ -1,14 +1,14 @@
 import Stack from "@mui/material/Stack";
 import { IconButton, Button, Box } from "@mui/material";
-
 import Circle from "@mui/icons-material/Circle";
 import { useState } from "react";
+import { COLORS } from "../config/MasterMindConfig";
 
 export const RoundComponent = (props) => {
-  //const { code } = props;
   const code = props.code;
   const turn = props.turn;
-  const colors = ["green", "red", "blue", "purple", "orange"];
+  const id = props.id;
+  const colors = COLORS;
   const [pinArray, setPinArray] = useState(["grey", "grey", "grey", "grey"]);
   const [clueArray, setClueArray] = useState(["grey", "grey", "grey", "grey"]);
 
@@ -73,7 +73,7 @@ export const RoundComponent = (props) => {
 
   const changeColor = (pinIndex) => {
     console.log(pinIndex);
-    if (pinArray[pinIndex] === "grey" || pinArray[pinIndex] === "orange") {
+    if (pinArray[pinIndex] === "grey" || pinArray[pinIndex] === colors[4]) {
       pinArray[pinIndex] = colors[0];
 
       setPinArray([...pinArray]);
@@ -90,10 +90,12 @@ export const RoundComponent = (props) => {
         {pinArray.map((item, index) => {
           return (
             <IconButton
-              disabled={!turn}
+              //   disabled={!turn}
               key={index}
               onClick={() => {
-                changeColor(index);
+                if (turn) {
+                  changeColor(index);
+                }
               }}
               sx={{ color: pinArray[index] }}
             >
@@ -103,9 +105,9 @@ export const RoundComponent = (props) => {
         })}
       </Stack>
       <Button
-        disabled={!turn}
+        disabled={!turn || pinArray.some((item) => item === "grey")}
         onClick={() => {
-          props.didWin(checkCode());
+          props.didWin(checkCode(), id);
         }}
       >
         Check
