@@ -8,6 +8,7 @@ import go from "../audio/go.mp3";
 import tic from "../audio/tic.mp3";
 
 export const Denis = () => {
+  // const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const [showComponent, setShowComponent] = useState(false);
   const [points, setPoints] = useState(0);
   const [time, setTime] = useState(0);
@@ -49,6 +50,7 @@ export const Denis = () => {
     if (gameStart) {
       const intervalId = setInterval(() => {
         setTime(time - 1);
+
         clockTic.play();
         if (time === 1) {
           setGameFinished(true);

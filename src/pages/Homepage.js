@@ -9,7 +9,7 @@ export const Homepage = () => {
   return (
     <div className="">
       <div className=" min-h-screen flex flex-col items-center justify-center bg-indigo-900 bg-[url('./images/arcade.jpg')] bg-center bg-cover">
-        <p className="text-center -mt-40 bg-slate-100 rounded-lg px-2">
+        <p className="animate-bounce text-center -mt-40 bg-slate-100 rounded-lg px-2">
           Hello, click on the game to start playing:)
         </p>
         <div class="mt-40 -mb-3">
@@ -45,7 +45,7 @@ export const Homepage = () => {
                 <Link
                   onClick={() => playClick()}
                   to={"./Denis"}
-                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
+                  class="animate-pulse p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
                 >
                   3.Denis
                 </Link>
