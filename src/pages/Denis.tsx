@@ -15,11 +15,9 @@ interface DenisProps {
 export const Denis: React.FC<DenisProps> = ({ points, setPoints }) => {
   // const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const [showComponent, setShowComponent] = useState<boolean>(false);
-  // const [points, setPoints] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
   const [gameFinished, setGameFinished] = useState<boolean>(false);
   const [gameStart, setGameStart] = useState<boolean>(false);
-  // const [playTic, setPlayTic] = useState(null);
 
   const playAudio = () => {
     new Audio(shownFood.type === "m" ? bad : yummy).play();
