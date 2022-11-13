@@ -1,3 +1,9 @@
+import { RoundComponent } from "../components";
 export const Edip = () => {
-  return;
+  return (
+    <div>
+      deneme
+      <RoundComponent />
+    </div>
+  );
 };
