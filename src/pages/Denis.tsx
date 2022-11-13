@@ -1,19 +1,24 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { imagesFood } from "./images";
-import bad from "../audio/fart.mp3";
-import yummy from "../audio/yummy.mp3";
-import click from "../audio/rclick.mp3";
-import go from "../audio/go.mp3";
-import tic from "../audio/tic.mp3";
+const bad = require("../audio/fart.mp3");
+const yummy = require("../audio/yummy.mp3");
+const click = require("../audio/rclick.mp3");
+const go = require("../audio/go.mp3");
+const tic = require("../audio/tic.mp3");
+interface DenisProps {
+  points: number;
+  setPoints: React.Dispatch<React.SetStateAction<number>>;
+}
 
-export const Denis = () => {
+export const Denis: React.FC<DenisProps> = ({ points, setPoints }) => {
   // const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const [showComponent, setShowComponent] = useState(false);
-  const [points, setPoints] = useState(0);
-  const [time, setTime] = useState(0);
-  const [gameFinished, setGameFinished] = useState(false);
-  const [gameStart, setGameStart] = useState(false);
+  const [showComponent, setShowComponent] = useState<boolean>(false);
+  // const [points, setPoints] = useState<number>(0);
+  const [time, setTime] = useState<number>(0);
+  const [gameFinished, setGameFinished] = useState<boolean>(false);
+  const [gameStart, setGameStart] = useState<boolean>(false);
   // const [playTic, setPlayTic] = useState(null);
 
   const playAudio = () => {
@@ -30,7 +35,7 @@ export const Denis = () => {
 
   const onStartClick = () => {
     playClick();
-    setTime(30);
+    setTime(30 + points);
     setPoints(0);
     setGameStart(true);
     setGameFinished(false);
@@ -46,7 +51,6 @@ export const Denis = () => {
 
   useEffect(() => {
     const clockTic = new Audio(tic);
-
     if (gameStart) {
       const intervalId = setInterval(() => {
         setTime(time - 1);

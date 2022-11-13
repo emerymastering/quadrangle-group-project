@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "typeRoots": ["node_modules/@types", "custom_typings/"],
+  "allowJs": true
+}
