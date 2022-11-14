@@ -1,41 +1,74 @@
-import React, { useState } from "react";
-import imageBoat from "../img_crossgame/boat.png";
 import imageadult1 from "../img_crossgame/adult1.png";
 import imageadult2 from "../img_crossgame/adult2.png";
-import imagechild1 from "../img_crossgame/child1.png";
-import imagechild2 from "../img_crossgame/child2.png";
-import imagechild3 from "../img_crossgame/child3.png";
+import imagechild2 from "../img_crossgame/kid2.png";
+import imagechild3 from "../img_crossgame/kid3.png";
+import MoveCharacter from "../components_crossgame/MoveCharacter";
+import { useState, useEffect } from "react";
 
 export default function CrossGame() {
-  const [showadult1, setShowadult1] = useState(true);
-  const [showadult2, setShowadult2] = useState(true);
+  const image = [imageadult1, imageadult2, imagechild2, imagechild3];
+  //   let numRandom = Math.floor(Math.random() * 3);
+  //   let imageRandom = image[numRandom];
+  let [count, setCount] = useState(0);
+  //   const [imagePrint, setImagePrint] = useState(image[count]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+  const imageToCompare = image[count % image.length];
+
+  //   const image = [imageadult1, imageadult2, imagechild2, imagechild3];
+  //   let numRandom = Math.floor(Math.random() * 3);
   return (
-    <div className="flex justify-between h-screen  bg-lime-500 ">
-      <div className="w-96">
-        <div className="flex">
-          <button onClick={() => setShowadult1(!showadult1)}>
-            <div className={showadult1 ? "show-element" : null}>
-              {showadult1 && <img src={imageadult1} alt="" className="w-16" />}
-            </div>
-          </button>
-          <button onClick={() => setShowadult2(!showadult2)}>
-            <div className={showadult2 ? "show-element" : null}>
-              {showadult2 && <img src={imageadult2} alt="" className="w-16" />}
-            </div>
-          </button>
-        </div>
-        <div className="flex">
-          <img src={imagechild1} alt="" className="w-14" />
-          <img src={imagechild2} alt="" className="w-16" />
-          <img src={imagechild3} alt="" className="w-14" />
-        </div>
+    <div className="flex justify-between h-screen  bg-landscape max-h-fit bg-no-repeat ">
+      <div className="flex">
+        <MoveCharacter
+          character={imageadult1}
+          imageToCompare={imageToCompare}
+        />
+        <MoveCharacter
+          character={imageadult2}
+          imageToCompare={imageToCompare}
+        />
+        <MoveCharacter
+          character={imagechild2}
+          imageToCompare={imageToCompare}
+        />
+        <MoveCharacter
+          character={imagechild2}
+          imageToCompare={imageToCompare}
+        />
+        <MoveCharacter
+          character={imagechild3}
+          imageToCompare={imageToCompare}
+        />
       </div>
-      <div className="w-96 bg-cyan-400">
-        <div>
-          <img src={imageBoat} alt="" className="w-40" />
-        </div>
+
+      <div>
+        <img src={imageToCompare} alt="" />
       </div>
-      <div className="w-96">3</div>
+      <div>
+        <h2> Good:</h2>
+        <h2>Bad: </h2>
+      </div>
     </div>
   );
 }
+// export default function CrossGame() {
+//   const imagerandom = imagechild2;
+//   return (
+//     <div className="flex justify-between h-screen  bg-landscape max-h-fit bg-no-repeat ">
+//       <div>
+//         <img src={imagechild2} alt="" />
+//       </div>
+//       {imagerandom === imagechild3 ? (
+//         <MoveCharacter character={imagechild3} />
+//       ) : (
+//         "Loose"
+//       )}
+//     </div>
+//   );
+// }
