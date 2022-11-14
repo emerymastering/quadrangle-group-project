@@ -5,35 +5,36 @@ export default function MoveCharacter(props) {
   //   let numX = Math.floor(Math.random() * 781);
   //   let numY = Math.floor(Math.random() * 456);
 
-  const [countGood, setCountGood] = useState(0);
-  const [countBad, setCountBad] = useState(0);
-  console.log("CountBAD", countBad);
-  console.log("CountGOOD", countGood);
+  //   const [countGood, setCountGood] = useState(0);
+  //   const [countBad, setCountBad] = useState(0);
+  //   console.log("CountBAD", countBad);
+  //   console.log("CountGOOD", countGood);
+  console.log(props.imageToCompare);
 
   return (
     <div>
-      {props.character === props.imageToCompare ? (
+      {props.characterName === props.imageToCompare ? (
         <button
           onClick={() => {
             setShowadult1(!showadult1);
-            setCountGood(countGood + 1);
+            // setCountGood(countGood + 1);
           }}
         >
           <div className={showadult1 ? "show-element" : null}>
             {showadult1 && (
-              <img src={props.character} alt="" className="w-16" />
+              <img src={props.characterImage} alt="" className="w-16" />
             )}
           </div>
         </button>
       ) : (
         <button
           onClick={() => {
-            setCountBad(countBad - 1);
+            // setCountBad(countBad - 1);
           }}
         >
           <div className={showadult1 ? "show-element" : null}>
             {showadult1 && (
-              <img src={props.character} alt="" className="w-16" />
+              <img src={props.characterImage} alt="" className="w-16" />
             )}
           </div>
         </button>

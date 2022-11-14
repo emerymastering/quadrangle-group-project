@@ -1,51 +1,53 @@
-import imageadult1 from "../img_crossgame/adult1.png";
-import imageadult2 from "../img_crossgame/adult2.png";
-import imagechild2 from "../img_crossgame/kid2.png";
-import imagechild3 from "../img_crossgame/kid3.png";
+import imagebug5 from "../img_crossgame/bug5.png";
+import imagebug19 from "../img_crossgame/bug19.png";
+import imagebug39 from "../img_crossgame/bug39.png";
+import imagebug13 from "../img_crossgame/bug13.png";
+import imagebug20 from "../img_crossgame/bug20.png";
+import imagebug38 from "../img_crossgame/bug38.png";
+import imagebug15 from "../img_crossgame/bug15.png";
+import imagebug22 from "../img_crossgame/bug22.png";
+import imagebug31 from "../img_crossgame/bug31.png";
 import MoveCharacter from "../components_crossgame/MoveCharacter";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectCharacters } from "../store_equals/characters/selectors";
 
 export default function CrossGame() {
-  const image = [imageadult1, imageadult2, imagechild2, imagechild3];
-  //   let numRandom = Math.floor(Math.random() * 3);
-  //   let imageRandom = image[numRandom];
+  const characters = useSelector(selectCharacters);
+  const image = [
+    imagebug5,
+    imagebug19,
+    imagebug39,
+    imagebug13,
+    imagebug20,
+    imagebug38,
+    imagebug15,
+    imagebug22,
+    imagebug31,
+  ];
+
   let [count, setCount] = useState(0);
-  //   const [imagePrint, setImagePrint] = useState(image[count]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCount((count) => count + 1);
-    }, 5000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
+
   const imageToCompare = image[count % image.length];
 
-  //   const image = [imageadult1, imageadult2, imagechild2, imagechild3];
-  //   let numRandom = Math.floor(Math.random() * 3);
   return (
-    <div className="flex justify-between h-screen  bg-landscape max-h-fit bg-no-repeat ">
-      <div className="flex">
-        <MoveCharacter
-          character={imageadult1}
-          imageToCompare={imageToCompare}
-        />
-        <MoveCharacter
-          character={imageadult2}
-          imageToCompare={imageToCompare}
-        />
-        <MoveCharacter
-          character={imagechild2}
-          imageToCompare={imageToCompare}
-        />
-        <MoveCharacter
-          character={imagechild2}
-          imageToCompare={imageToCompare}
-        />
-        <MoveCharacter
-          character={imagechild3}
-          imageToCompare={imageToCompare}
-        />
-      </div>
+    <div className="flex flex-wrap h-screen bg-landscape max-h-fit bg-no-repeat ">
+      {characters.map((c) => (
+        <div key={c.id}>
+          <MoveCharacter
+            characterImage={c.image}
+            characterName={c.name}
+            imageToCompare={imageToCompare}
+          />
+        </div>
+      ))}
 
       <div>
         <img src={imageToCompare} alt="" />
@@ -57,18 +59,8 @@ export default function CrossGame() {
     </div>
   );
 }
-// export default function CrossGame() {
-//   const imagerandom = imagechild2;
-//   return (
-//     <div className="flex justify-between h-screen  bg-landscape max-h-fit bg-no-repeat ">
-//       <div>
-//         <img src={imagechild2} alt="" />
-//       </div>
-//       {imagerandom === imagechild3 ? (
-//         <MoveCharacter character={imagechild3} />
-//       ) : (
-//         "Loose"
-//       )}
-//     </div>
-//   );
-// }
+
+// const RandomImage = () => {
+//   const image = images[Math.floor(Math.random() * images.length)];
+//   return <img src={image} alt="" />;
+// };
