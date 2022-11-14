@@ -1,3 +1,4 @@
+import "./Denis.css";
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -94,7 +95,7 @@ export const Denis: React.FC<DenisProps> = ({ points, setPoints }) => {
               >
                 Start Again
               </button>
-              <div className="bg-black animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full my-auto">
+              <div className="bg-black text-center animate-pulse text-5xl text-red-300 px-10 py-10 rounded-full my-auto">
                 {points <= 0 ? (
                   <div>
                     You scored {points}, next time choose a better food:)
@@ -106,7 +107,7 @@ export const Denis: React.FC<DenisProps> = ({ points, setPoints }) => {
               <Link
                 to={"/"}
                 onClick={() => playClick()}
-                className="bg-black text-5xl text-red-300 px-10 py-10 rounded-full my-auto"
+                className="bg-black text-5xl text-center text-red-300 px-10 py-10 rounded-full my-auto"
               >
                 Back to Homepage
               </Link>
@@ -121,10 +122,12 @@ export const Denis: React.FC<DenisProps> = ({ points, setPoints }) => {
                 Time: {time} sec
               </div>
               {
-                <div className="max-h-10 mx-auto">
+                <div className={`max-h-10 mx-auto`}>
                   <img
                     src={shownFood.image}
-                    className="max-w-xs h-auto rounded-full"
+                    className={`max-w-xs h-auto rounded-full ${
+                      shownFood.type === "v" ? "veg-image" : "meat-image"
+                    }`}
                     alt=""
                     onClick={() => onClick()}
                   ></img>
