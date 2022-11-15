@@ -1,14 +1,14 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Homepage } from "./pages";
-import CrossGame from "./pages/CrossGame";
+import EqualGame from "./pages/EqualGame";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/crossgame" element={<CrossGame />} />
+        <Route path="/equalgame" element={<EqualGame />} />
       </Routes>
     </div>
   );

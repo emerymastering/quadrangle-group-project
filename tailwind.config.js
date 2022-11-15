@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        landscape: "url('/src/img_crossgame/landscape.png')",
+        landscape: "url('/src/img_equalgame/landscape.png')",
       },
     },
   },

@@ -1,19 +1,23 @@
-import imagebug5 from "../img_crossgame/bug5.png";
-import imagebug19 from "../img_crossgame/bug19.png";
-import imagebug39 from "../img_crossgame/bug39.png";
-import imagebug13 from "../img_crossgame/bug13.png";
-import imagebug20 from "../img_crossgame/bug20.png";
-import imagebug38 from "../img_crossgame/bug38.png";
-import imagebug15 from "../img_crossgame/bug15.png";
-import imagebug22 from "../img_crossgame/bug22.png";
-import imagebug31 from "../img_crossgame/bug31.png";
-import MoveCharacter from "../components_crossgame/MoveCharacter";
+import imagebug5 from "../img_equalgame/bug5.png";
+import imagebug19 from "../img_equalgame/bug19.png";
+import imagebug39 from "../img_equalgame/bug39.png";
+import imagebug13 from "../img_equalgame/bug13.png";
+import imagebug20 from "../img_equalgame/bug20.png";
+import imagebug38 from "../img_equalgame/bug38.png";
+import imagebug15 from "../img_equalgame/bug15.png";
+import imagebug22 from "../img_equalgame/bug22.png";
+import imagebug31 from "../img_equalgame/bug31.png";
+import MoveCharacter from "../components_equalgame/MoveCharacter";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCharacters } from "../store_equals/characters/selectors";
+import {
+  selectCharacters,
+  selectScore,
+} from "../store_equals/characters/selectors";
 
-export default function CrossGame() {
+export default function EqualGame() {
   const characters = useSelector(selectCharacters);
+  const points = useSelector(selectScore);
   const image = [
     imagebug5,
     imagebug19,
@@ -53,8 +57,7 @@ export default function CrossGame() {
         <img src={imageToCompare} alt="" />
       </div>
       <div>
-        <h2> Good:</h2>
-        <h2>Bad: </h2>
+        <h2 className="text-white text-xl"> Score: {points}</h2>
       </div>
     </div>
   );

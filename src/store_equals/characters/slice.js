@@ -273,15 +273,21 @@ const initialState = {
         "https://res.cloudinary.com/dfwupsfxv/image/upload/v1668439594/bug41_iwtcyf.png",
     },
   ],
+  points: 0,
 };
 
 export const characterSlice = createSlice({
   name: "characters",
   initialState,
   reducers: {
-    score: (state) => {},
+    score: (state, action) => {
+      state.points = state.points + action.payload;
+    },
+    scoreBad: (state, action) => {
+      state.points = state.points - action.payload;
+    },
   },
 });
 
-export const { score } = characterSlice.actions;
+export const { score, scoreBad } = characterSlice.actions;
 export default characterSlice.reducer;
