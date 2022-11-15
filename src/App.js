@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 import { Homepage } from "./pages";
+import EqualGame from "./pages/EqualGame";
 import { Edip } from "./pages";
 import { Elys } from "./pages";
 import { Denis } from "./pages";
@@ -14,6 +15,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/equalgame" element={<EqualGame />} />
         <Route path="/Edip" element={<Edip />} />
         <Route path="/Elys" element={<Elys />} />
         <Route
