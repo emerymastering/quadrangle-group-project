@@ -284,7 +284,9 @@ export const characterSlice = createSlice({
       state.points = state.points + action.payload;
     },
     scoreBad: (state, action) => {
-      state.points = state.points - action.payload;
+      state.points > 0
+        ? (state.points = state.points - action.payload)
+        : (state.points = 0);
     },
   },
 });

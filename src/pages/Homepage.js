@@ -37,10 +37,10 @@ export const Homepage = () => {
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <Link
                   onClick={() => playClick()}
-                  to={"/Elys"}
+                  to={"/equalgame"}
                   class="p-4 rounded-lg shadow-lg bg-sky-500 col-end-7 col-span-2"
                 >
-                  2.Elys
+                  EqualGame
                 </Link>
                 <Link
                   onClick={() => playClick()}
