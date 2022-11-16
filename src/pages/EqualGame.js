@@ -15,6 +15,8 @@ import {
   selectScore,
 } from "../store_equals/characters/selectors";
 import Winner from "../components_equalgame/Winner";
+import useSound from "use-sound";
+import winnerSound from "../audio/winner.mp3";
 
 export default function EqualGame() {
   const characters = useSelector(selectCharacters);
@@ -41,12 +43,14 @@ export default function EqualGame() {
   }, []);
 
   const imageToCompare = image[count % image.length];
+  const [playWinner] = useSound(winnerSound);
 
   return (
     <div className=" h-screen bg-landscape max-h-fit bg-no-repeat ">
       {points === 5 ? (
         <div>
           <Winner />
+          {playWinner()}
         </div>
       ) : (
         <div className="flex">
@@ -78,7 +82,7 @@ export default function EqualGame() {
               <img src={imageToCompare} alt="" />
             </div>
             <div>
-              <h2 className="mr-24 font-mono  text-5xl text-center text-yellow-400 drop-shadow-3xl font-bold">
+              <h2 className="mr-24 font-mono text-5xl text-center text-yellow-400 drop-shadow-3xl font-bold">
                 {" "}
                 SCORE: {points}
               </h2>

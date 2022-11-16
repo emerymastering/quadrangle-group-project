@@ -7,9 +7,9 @@ import "./style.css";
 export default function Winner() {
   const points = useSelector(selectScore);
   return (
-    <div className="container">
-      <h2 className="text-fuchsia-500">
-        You are the winner baby and you have {points} points
+    <div className="container flex flex-col items-center text-center pl-60">
+      <h2 className="font-mono text-5xl text-yellow-400 drop-shadow-3xl my-20 uppercase">
+        You are the winner baby! <br /> you have {points} points
       </h2>
       <Link
         to="/"

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { score, scoreBad } from "../store_equals/characters/slice";
+import useSound from "use-sound";
+import badSound from "../audio/fart.mp3";
+import winSound from "../audio/correct-choice.mp3";
 
 export default function MoveCharacter(props) {
   const [showbug, setShowbug] = useState(true);
 
   const dispatch = useDispatch();
-  //   let numX = Math.floor(Math.random() * 781);
-  //   let numY = Math.floor(Math.random() * 456);
+  const [playBad] = useSound(badSound);
+  const [playWin] = useSound(winSound);
 
   console.log(props.imageToCompare);
 
@@ -18,6 +21,7 @@ export default function MoveCharacter(props) {
           onClick={() => {
             setShowbug(!showbug);
             dispatch(score(1));
+            playWin();
           }}
         >
           <div className={showbug ? "show-element" : null}>
@@ -30,6 +34,7 @@ export default function MoveCharacter(props) {
         <button
           onClick={() => {
             dispatch(scoreBad(1));
+            playBad();
           }}
         >
           <div className={showbug ? "show-element" : null}>

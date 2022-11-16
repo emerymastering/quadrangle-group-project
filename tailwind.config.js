@@ -9,9 +9,10 @@ module.exports = {
       dropShadow: {
         "3xl": ["0 0 15px rgb(219, 62, 177)", "0 0 50px rgb(219, 62, 177)"],
         "4xl": ["0 0 20px rgb(219, 62, 177)"],
+        "5xl": ["0 0 15px rgb(250, 204, 20)", "0 0 50px rgb(250, 204, 20)"],
       },
       backgroundImage: {
-        landscape: "url('/src/img_equalgame/landscape.png')",
+        landscape: "url('/src/img_equalgame/background-game.gif')",
       },
       fontFamily: {
         Bungee: ["Bungee", "cursive"],

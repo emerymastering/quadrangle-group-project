@@ -4,7 +4,6 @@ import React from "react";
 import { Homepage } from "./pages";
 import EqualGame from "./pages/EqualGame";
 import { Edip } from "./pages";
-import { Elys } from "./pages";
 import { Denis } from "./pages";
 import { Chathu } from "./pages";
 import { useState } from "react";
@@ -17,7 +16,6 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/equalgame" element={<EqualGame />} />
         <Route path="/Edip" element={<Edip />} />
-        <Route path="/Elys" element={<Elys />} />
         <Route
           path="/Denis"
           element={<Denis points={points} setPoints={setPoints} />}
