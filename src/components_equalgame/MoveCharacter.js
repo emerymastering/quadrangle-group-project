@@ -12,7 +12,7 @@ export default function MoveCharacter(props) {
   console.log(props.imageToCompare);
 
   return (
-    <div>
+    <div className="mx-3 my-1">
       {props.characterName === props.imageToCompare ? (
         <button
           onClick={() => {

@@ -14,6 +14,7 @@ import {
   selectCharacters,
   selectScore,
 } from "../store_equals/characters/selectors";
+import Winner from "../components_equalgame/Winner";
 
 export default function EqualGame() {
   const characters = useSelector(selectCharacters);
@@ -42,38 +43,63 @@ export default function EqualGame() {
   const imageToCompare = image[count % image.length];
 
   return (
-    <div className="flex flex-wrap h-screen bg-landscape max-h-fit bg-no-repeat ">
-      {characters.map((c) => (
-        <div key={c.id}>
-          <MoveCharacter
-            characterImage={c.image}
-            characterName={c.name}
-            imageToCompare={imageToCompare}
-          />
+    <div className=" h-screen bg-landscape max-h-fit bg-no-repeat ">
+      {points === 5 ? (
+        <div>
+          <Winner />
         </div>
-      ))}
-
-      {characters.map((c) => (
-        <div key={c.id}>
-          <MoveCharacter
-            characterImage={c.image}
-            characterName={c.name}
-            imageToCompare={imageToCompare}
-          />
+      ) : (
+        <div className="flex">
+          <div className="flex flex-wrap h-screen bg-landscape max-h-fit bg-no-repeat container ml-10 justify-center ">
+            {characters.map((c) => (
+              <div key={c.id}>
+                <MoveCharacter
+                  characterImage={c.image}
+                  characterName={c.name}
+                  imageToCompare={imageToCompare}
+                />
+              </div>
+            ))}
+            {characters.map((c) => (
+              <div key={c.id}>
+                <MoveCharacter
+                  characterImage={c.image}
+                  characterName={c.name}
+                  imageToCompare={imageToCompare}
+                />
+              </div>
+            ))}
+          </div>
+          <div>
+            <div className="mr-24 mt-24 flex flex-col text-center">
+              <h2 className=" text-fuchsia-500 animate-pulse drop-shadow-3xl text-7xl font-BungeeShade my-20">
+                EQUAL GAME
+              </h2>
+              <img src={imageToCompare} alt="" />
+            </div>
+            <div>
+              <h2 className="mr-24 font-mono  text-5xl text-center text-yellow-400 drop-shadow-3xl font-bold">
+                {" "}
+                SCORE: {points}
+              </h2>
+            </div>
+          </div>
         </div>
-      ))}
-
-      <div>
-        <img src={imageToCompare} alt="" />
-      </div>
-      <div>
-        <h2 className="text-white text-xl"> Score: {points}</h2>
-      </div>
+      )}
     </div>
   );
 }
 
-// const RandomImage = () => {
-//   const image = images[Math.floor(Math.random() * images.length)];
-//   return <img src={image} alt="" />;
-// };
+////
+// h1 {
+// 	animation: neon1 1.5s ease-in-out infinite alternate;
+// }
+
+// #overlay {
+// 	position: absolute;
+// 	right: 0;
+// 	left: 0;
+// 	margin: auto;
+// 	width: 100%;
+// 	text-align: center;
+// }
