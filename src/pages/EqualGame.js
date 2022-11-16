@@ -53,6 +53,16 @@ export default function EqualGame() {
         </div>
       ))}
 
+      {characters.map((c) => (
+        <div key={c.id}>
+          <MoveCharacter
+            characterImage={c.image}
+            characterName={c.name}
+            imageToCompare={imageToCompare}
+          />
+        </div>
+      ))}
+
       <div>
         <img src={imageToCompare} alt="" />
       </div>
