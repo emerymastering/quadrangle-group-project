@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import click from "../audio/rclick.mp3";
 
 export const Homepage = () => {
+  const playClick = () => {
+    new Audio(click).play();
+  };
+
   return (
     <div className="">
       <div className=" min-h-screen flex flex-col items-center justify-center bg-indigo-900 bg-[url('./images/arcade.jpg')] bg-center bg-cover">
-        <p className="text-center -mt-40 bg-slate-100 rounded-lg px-2">
+        <p className="animate-bounce text-center -mt-40 bg-slate-100 rounded-lg px-2">
           Hello, click on the game to start playing:)
         </p>
         <div class="mt-40 -mb-3">
@@ -14,6 +19,7 @@ export const Homepage = () => {
               <div class="grid grid-cols-6 gap-4 font-mono text-white text-sm text-center font-bold leading-6">
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <Link
+                  onClick={() => playClick()}
                   to={"/Edip"}
                   class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
                 >
@@ -21,6 +27,7 @@ export const Homepage = () => {
                 </Link>
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <Link
+                  onClick={() => playClick()}
                   to={"./Chathu"}
                   class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-1 col-end-3"
                 >
@@ -29,14 +36,16 @@ export const Homepage = () => {
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <div class="p-4 rounded-lg bg-stripes-sky"></div>
                 <Link
-                  to={"/Elys"}
+                  onClick={() => playClick()}
+                  to={"/equalgame"}
                   class="p-4 rounded-lg shadow-lg bg-sky-500 col-end-7 col-span-2"
                 >
-                  2.Elys
+                  EqualGame
                 </Link>
                 <Link
+                  onClick={() => playClick()}
                   to={"./Denis"}
-                  class="p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
+                  class="animate-pulse p-4 rounded-lg shadow-lg bg-sky-500 col-start-3 col-span-2"
                 >
                   3.Denis
                 </Link>

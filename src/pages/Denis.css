@@ -1,0 +1,7 @@
+.veg-image:active {
+  border: 15px solid green;
+}
+
+.meat-image:active {
+  border: 15px solid red;
+}
