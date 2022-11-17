@@ -1,7 +1,7 @@
 import { RoundComponent } from "../components";
 import { COLORS, ROUNDS } from "../config/MasterMindConfig";
 import { useState, useEffect } from "react";
-import { Modal, Button, Box } from "@mui/material";
+import { Modal, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
@@ -36,10 +36,10 @@ export const Edip = () => {
     for (let i = 0; i < 4; i++) {
       codeArray.push(colors[Math.floor(Math.random() * 4)]);
     }
-    console.log(codeArray);
+    console.log("code Array", codeArray);
     return codeArray;
   };
-  const code = createCode();
+  const [code, setCode] = useState(createCode());
 
   const startGame = (rounds) => {
     let array = [];
@@ -73,6 +73,7 @@ export const Edip = () => {
     restart();
   };
   const restart = () => {
+    setCode(createCode());
     setRoundArray([]);
     setCurrentTurn(0);
   };
@@ -82,65 +83,84 @@ export const Edip = () => {
   }, [rounds]);
 
   return (
-    <div>
-      <div>
+    <div
+      style={{
+        flexDirection: "column",
+        alignSelf: "center",
+        alignItems: "center",
+        display: "flex",
+        backgroundColor: "#2f3542",
+      }}
+    >
+      <div style={{ border: "3px solid #2ed573", borderRadius: "16px" }}>
         <div>
-          <Button onClick={handleOpen}>Open modal</Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography
-                textAlign="center"
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-              >
-                {didWin ? "You WON!" : "You LOST!"}
-                {didWin ? (
-                  <EmojiEventsIcon
-                    sx={{
-                      width: 100,
-                      height: 100,
-                      color: "green",
-                    }}
-                  />
-                ) : (
-                  <SentimentVeryDissatisfiedIcon
-                    sx={{
-                      width: 100,
-                      height: 100,
-                      color: "red",
-                    }}
-                  />
-                )}
-              </Typography>
-            </Box>
-          </Modal>
+          <Box sx={{}}>
+            <Typography
+              variant="h3"
+              align="center"
+              color={"#2ed573"}
+              gutterBottom
+            >
+              Mastermind
+            </Typography>
+          </Box>
+          <div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography
+                  textAlign="center"
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  {didWin ? "You WON!" : "You LOST!"}
+                  {didWin ? (
+                    <EmojiEventsIcon
+                      sx={{
+                        width: 100,
+                        height: 100,
+                        color: "green",
+                      }}
+                    />
+                  ) : (
+                    <SentimentVeryDissatisfiedIcon
+                      sx={{
+                        width: 100,
+                        height: 100,
+                        color: "red",
+                      }}
+                    />
+                  )}
+                </Typography>
+              </Box>
+            </Modal>
+          </div>
         </div>
-
-        <button
-          onClick={() => {
-            startGame(rounds);
-          }}
-        >
-          Deneme
-        </button>
+        {roundArray.map((itemIndex) => {
+          return (
+            <RoundComponent
+              key={itemIndex}
+              id={itemIndex}
+              code={code}
+              turn={currentTurn === itemIndex}
+              didWin={checkDidWin}
+            />
+          );
+        })}
       </div>
-      {roundArray.map((itemIndex) => {
-        return (
-          <RoundComponent
-            key={itemIndex}
-            id={itemIndex}
-            code={code}
-            turn={currentTurn === itemIndex}
-            didWin={checkDidWin}
-          />
-        );
-      })}
+      <Box visibility={false} sx={{ width: "500px" }}>
+        <Typography color={"white"} variant="h6" gutterBottom>
+          Try to guess the pattern, in both order and color, within ten turns.
+          After submitting a row, a small green squared is show for each circle
+          in a correct position and color. A yellow square indicates the
+          existence of a correct color in an incorrect position.
+        </Typography>
+      </Box>
     </div>
   );
 };

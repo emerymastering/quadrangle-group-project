@@ -83,9 +83,27 @@ export const RoundComponent = (props) => {
       setPinArray([...pinArray]);
     }
   };
-
+  const commonStyles = {
+    bgcolor: "background.paper",
+    m: 1,
+    width: "20rem",
+  };
   return (
-    <Stack disabled={true} direction="row" spacing={1}>
+    <Stack
+      sx={{
+        ...commonStyles,
+        border: turn ? 4 : 0,
+        borderRadius: "16px",
+        borderColor: "#2ed573",
+        display: "flex",
+        alignContent: "flex-end",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      disabled={true}
+      direction="row"
+      spacing={1}
+    >
       <Stack direction="row" spacing={1}>
         {pinArray.map((item, index) => {
           return (
