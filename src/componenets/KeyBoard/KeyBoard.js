@@ -2,7 +2,7 @@ import React from "react";
 import Key from "./Key";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
-export default function KeyBoard() {
+const Keyboard = () => {
   const set1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const set2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const set3 = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -55,7 +55,7 @@ export default function KeyBoard() {
         {set3.map((char, index) => (
           <Key key={index} letter={char} />
         ))}
-        <Key key={true} letter={<ArrowLeftOutlined />} />
+        <Key big={true} letter={<ArrowLeftOutlined />} />
       </div>
     );
   };
@@ -67,4 +67,6 @@ export default function KeyBoard() {
       <Set3 />
     </div>
   );
-}
+};
+
+export default Keyboard;

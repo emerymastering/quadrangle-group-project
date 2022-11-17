@@ -1,9 +1,8 @@
 import React from "react";
 import Row from "./Row";
 
-export default function Grid() {
+const Grid = () => {
   const rows = [1, 2, 3, 4, 5, 6];
-
   return (
     <div className="m-4">
       {rows.map((row, index) => (
@@ -11,4 +10,5 @@ export default function Grid() {
       ))}
     </div>
   );
-}
+};
+export default Grid;

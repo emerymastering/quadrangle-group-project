@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { WordleContext } from "../App";
 import Grid from "./Grid/Grid";
-import KeyBoard from "./Keyboard/KeyBoard";
+import Keyboard from "./Keyboard/Keyboard";
 
-export default function Board() {
+const Board = () => {
+  const { word } = useContext(WordleContext);
   return (
-    <div>
-      <h1 className="font-extrabold text-5xl m-4 ">WORDLE</h1>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="font-extrabold text-5xl m-4">WORDLE</h1>
       <Grid />
-      <KeyBoard />
+      <Keyboard />
       <small className="m-5">
         #Refresh Page to play again with different word.
       </small>
+      <small className="rotate-180 text-[4px]"> {word} </small>
     </div>
   );
-}
+};
+
+export default Board;
