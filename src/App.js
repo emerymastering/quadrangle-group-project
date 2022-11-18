@@ -1,3 +1,6 @@
+import { Routes, Route } from "react-router-dom";
+import React from "react";
+
 import "./App.css";
 import Board from "./components/Board.js";
 import { createContext, useState } from "react";
@@ -6,7 +9,16 @@ import { dictionary } from "./components/variables";
 
 export const WordleContext = createContext();
 
+import { Homepage } from "./pages";
+import EqualGame from "./pages/EqualGame";
+import { Edip } from "./pages";
+import { Denis } from "./pages";
+import { Chathu } from "./pages";
+import { useState } from "react";
+
 function App() {
+  const [points, setPoints] = useState(0);
+
   const [word, setWord] = useState("GAMES");
   const [completedRows, setCompletedRows] = useState([]);
   const [guessWord, setGuessWord] = useState("");
@@ -38,19 +50,31 @@ function App() {
   };
 
   return (
-    <WordleContext.Provider
-      value={{
-        guessTheWord,
-        pressEnter,
-        completedRows,
-        currentRow,
-        word,
-        guessWord,
-        backspace,
-      }}
-    >
-      <Board />
-    </WordleContext.Provider>
+    <div>
+      <WordleContext.Provider
+        value={{
+          guessTheWord,
+          pressEnter,
+          completedRows,
+          currentRow,
+          word,
+          guessWord,
+          backspace,
+        }}
+      >
+        <Board />
+      </WordleContext.Provider>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/equalgame" element={<EqualGame />} />
+        <Route path="/Edip" element={<Edip />} />
+        <Route
+          path="/Denis"
+          element={<Denis points={points} setPoints={setPoints} />}
+        />
+        <Route path="/Chathu" element={<Chathu />} />
+      </Routes>
+    </div>
   );
 }
 

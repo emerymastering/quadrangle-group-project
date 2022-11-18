@@ -1,0 +1,15 @@
+.winner {
+  animation-name: slide-bottom;
+  animation-duration: 5s;
+  bottom: -350px;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-bottom {
+  from {
+    bottom: -350px;
+  }
+  to {
+    bottom: -100px;
+  }
+}
