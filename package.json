@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.9",
@@ -20,8 +21,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
-    "reactjs-popup": "^2.0.5",
-    "typescript": "^4.8.4",
+    "reactjs-popup": "^2.0.5",    
     "use-sound": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.2"
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
   }
 }
