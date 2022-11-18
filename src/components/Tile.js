@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { WordleContext } from "../../App";
+import { WordleContext } from "../pages/Chathu";
 
 const Tile = ({ id, rowId }) => {
   const [letter, setLetter] = useState("");

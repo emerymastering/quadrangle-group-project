@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { WordleContext } from "../../App";
+import { WordleContext } from "../../pages/Chathu";
 
 const Key = (props) => {
   const { guessTheWord, backspace, pressEnter } = useContext(WordleContext);
